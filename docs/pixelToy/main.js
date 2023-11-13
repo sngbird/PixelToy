@@ -36,7 +36,7 @@ options = {
   isPlayingBgm: true,
   isReplayEnabled: true,
   isShowingScore: false,
-  seed: 17,
+  seed: 12,
 };
 
 /** @type {{pos: Vector, zPos:number, zVel: number, velocity: Vector, color: String, colorCode: number}[]} */
