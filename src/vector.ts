@@ -163,3 +163,82 @@ export class Vector {
     return Math.atan2(this.y, this.x);
   }
 }
+
+export interface Vector3Like {
+  x: number;
+  y: number;
+  z: number;
+}
+
+function isVector3Like(v: any): v is Vector3Like {
+  return v.x != null && v.y != null && v.z != null;
+}
+
+export class Vector3 {
+  x = 0;
+  y = 0;
+  z = 0;
+
+  constructor(x?: number | Vector3Like, y?: number, z?: number) {
+    this.set(x, y, z);
+  }
+
+  set(x: number | Vector3Like = 0, y: number = 0, z: number = 0) {
+    if (isVector3Like(x)) {
+      this.x = x.x;
+      this.y = x.y;
+      this.z = x.z;
+      return this;
+    }
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    return this;
+  }
+
+  add(x: number | Vector3Like, y?: number, z?: number) {
+    if (isVector3Like(x)) {
+      this.x += x.x;
+      this.y += x.y;
+      this.z += x.z;
+      return this;
+    }
+    this.x += x;
+    this.y += y;
+    this.z += z;
+    return this;
+  }
+
+  sub(x: number | Vector3Like, y?: number, z?: number) {
+    if (isVector3Like(x)) {
+      this.x -= x.x;
+      this.y -= x.y;
+      this.z -= x.z;
+      return this;
+    }
+    this.x -= x;
+    this.y -= y;
+    this.z -= z;
+    return this;
+  }
+
+  mul(v: number) {
+    this.x *= v;
+    this.y *= v;
+    this.z *= v;
+    return this;
+  }
+
+  div(v: number) {
+    this.x /= v;
+    this.y /= v;
+    this.z /= v;
+    return this;
+  }
+
+  // Add other methods similar to the ones in the 2D Vector class as needed
+
+  get length() {
+    return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+  }
+}
