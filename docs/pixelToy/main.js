@@ -1,6 +1,6 @@
 title = "Pixel Toy";
 
-description = `calm
+description = `Meditate
 `;
 
 characters = [`
@@ -33,10 +33,10 @@ const EDGE_MARGIN = 50;
 options = {
   viewSize: { x: VIEW_X, y: VIEW_Y },
   theme: "dark",
-  isPlayingBgm: false,
+  isPlayingBgm: true,
   isReplayEnabled: true,
   isShowingScore: false,
-  seed: 1,
+  seed: 17,
 };
 
 /** @type {{pos: Vector, zPos:number, zVel: number, velocity: Vector, color: String, colorCode: number}[]} */
@@ -144,7 +144,7 @@ function toyFeature(number){
     //All Unattracted
     for(let i = 0; i < numColors; i++){
       for(let j = 0; j < numColors; j++){
-        attractionMatrix[i][j] = -1;
+        attractionMatrix[i][j] = -.9;
       }
     }
   }
@@ -160,7 +160,7 @@ function toyFeature(number){
     //Max Attraction 
     for(let i = 0; i < numColors; i++){
       for(let j = 0; j < numColors; j++){
-        attractionMatrix[i][j] = .95;
+        attractionMatrix[i][j] = .9;
       }
     }
   }
@@ -168,11 +168,11 @@ function toyFeature(number){
     //Self Attraction
     for(let i = 0; i < numColors; i++){
       for(let j = 0; j < numColors; j++){
-        attractionMatrix[i][j] = -.95;
+        attractionMatrix[i][j] = -.9;
       }
     }
     for(let i = 0; i < numColors; i++){
-      attractionMatrix[i][i] = .95;
+      attractionMatrix[i][i] = .9;
     }
   }
   if (number === 5){
@@ -183,18 +183,18 @@ function toyFeature(number){
       }
     }
     for(let i = 0; i < numColors; i++){
-      attractionMatrix[i][i] = -.95;
+      attractionMatrix[i][i] = -.9;
     }
   }
   if (number === 6){
     for (let i = 0; i < numColors; i++){
-      attractionMatrix[i][3] = .95;
+      attractionMatrix[i][3] = .9;
       attractionMatrix[3][i] = -.5;
     }
-    attractionMatrix[3][3] = .95;
+    attractionMatrix[3][3] = .9;
     predator = true;
   }
-  
+  play("random")
 }
 function toyMessage(number){
   if (number === 0){
