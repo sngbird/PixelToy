@@ -33,7 +33,7 @@ const EDGE_MARGIN = 50;
 options = {
   viewSize: { x: VIEW_X, y: VIEW_Y },
   theme: "dark",
-  isPlayingBgm: true,
+  isPlayingBgm: false,
   isReplayEnabled: true,
   isShowingScore: false,
   seed: 12,
